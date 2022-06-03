@@ -30,44 +30,41 @@ namespace Logic.Managers
             return mappedProduct;
         }
 
-        public Logic.Models.ListProduct CreateListProduct(Logic.Models.ListProduct listproduct)
+        public Logic.Models.Product CreateProduct(Logic.Models.Product product)
         {
-            Database.Models.ListProduct listProductToCreate = new Database.Models.ListProduct()
+            Database.Models.Product productToCreate = new Database.Models.Product()
             {
-                Id = listproduct.Id,
-                ListName = listproduct.ListName,
-                Description = listproduct.Description,
-                //Products = product.Products,
-                Type = listproduct.Type
+                Id = product.Id,
+                ProductName = product.ProductName,
+                ProductPrice = product.ProductPrice,
             };
-            _uow.ListProductRepository.CreateListProduct(listProductToCreate);
+            _uow.ProductRepository.CreateProduct(productToCreate);
             _uow.Save();
 
-            return new Logic.Models.ListProduct()
+            return new Logic.Models.Product()
             {
-                Id = listProductToCreate.Id,
-                ListName = listProductToCreate.ListName,
-                Description = listProductToCreate.Description,
-                //Products = product.Products,
-                Type = listProductToCreate.Type
+                Id = productToCreate.Id,
+                ProductName = productToCreate.ProductName,
+                ProductPrice = productToCreate.ProductPrice,
+       
             };
         }
 
-        public Logic.Models.ListProduct UpdateListProduct(Logic.Models.ListProduct listProduct)
+        public Logic.Models.Product UpdateProduct(Logic.Models.Product product)
         {
-            Database.Models.ListProduct listProductToUpdate = _uow.ListProductRepository.GetById(listProduct.Id);
+            Database.Models.Product productToUpdate = _uow.ProductRepository.GetById(product.Id);
 
-            listProductToUpdate.ListName = listProduct.ListName;
-            listProductToUpdate.Description = listProduct.Description;
+            productToUpdate.ProductName = product.ProductName;
+            productToUpdate.ProductPrice = product.ProductPrice;
 
-            _uow.ListProductRepository.UpdateListProduct(listProductToUpdate);
+            _uow.ProductRepository.UpdateProduct(productToUpdate);
             _uow.Save();
 
-            return new Logic.Models.ListProduct()
+            return new Logic.Models.Product()
             {
-                Id = listProductToUpdate.Id,
-                ListName = listProductToUpdate.ListName,
-                Description = listProductToUpdate.Description
+                Id = productToUpdate.Id,
+                ProductName = productToUpdate.ProductName,
+                ProductPrice = productToUpdate.ProductPrice
 
             };
         }

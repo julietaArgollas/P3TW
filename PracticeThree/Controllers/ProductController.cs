@@ -23,7 +23,7 @@ namespace PracticeThree.Controllers
         {
             return Ok(_productManager.GetProduct());
         }
-        /*
+        
         [HttpPost]
         [Route("CreateProducts")]
         public IActionResult CreateProduct([FromBody] Logic.Models.Product product)
@@ -37,6 +37,6 @@ namespace PracticeThree.Controllers
         {
             return Ok(_productManager.UpdateProduct(product));
         }
-        */
+        
     }
 }
