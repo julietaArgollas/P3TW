@@ -29,5 +29,48 @@ namespace Logic.Managers
             }
             return mappedProduct;
         }
+
+        public Logic.Models.ListProduct CreateListProduct(Logic.Models.ListProduct listproduct)
+        {
+            Database.Models.ListProduct listProductToCreate = new Database.Models.ListProduct()
+            {
+                Id = listproduct.Id,
+                ListName = listproduct.ListName,
+                Description = listproduct.Description,
+                //Products = product.Products,
+                Type = listproduct.Type
+            };
+            _uow.ListProductRepository.CreateListProduct(listProductToCreate);
+            _uow.Save();
+
+            return new Logic.Models.ListProduct()
+            {
+                Id = listProductToCreate.Id,
+                ListName = listProductToCreate.ListName,
+                Description = listProductToCreate.Description,
+                //Products = product.Products,
+                Type = listProductToCreate.Type
+            };
+        }
+
+        public Logic.Models.ListProduct UpdateListProduct(Logic.Models.ListProduct listProduct)
+        {
+            Database.Models.ListProduct listProductToUpdate = _uow.ListProductRepository.GetById(listProduct.Id);
+
+            listProductToUpdate.ListName = listProduct.ListName;
+            listProductToUpdate.Description = listProduct.Description;
+
+            _uow.ListProductRepository.UpdateListProduct(listProductToUpdate);
+            _uow.Save();
+
+            return new Logic.Models.ListProduct()
+            {
+                Id = listProductToUpdate.Id,
+                ListName = listProductToUpdate.ListName,
+                Description = listProductToUpdate.Description
+
+            };
+        }
+
     }
 }

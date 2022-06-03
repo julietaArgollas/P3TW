@@ -21,7 +21,7 @@ namespace Database.Repositories
             return await _context.Set<ListProduct>().ToListAsync();
         }
 
-        public ListProduct CreateProduct(ListProduct product)
+        public ListProduct CreateListProduct(ListProduct product)
         {
             _context.Set<ListProduct>().Add(product);
             return product;
@@ -32,13 +32,13 @@ namespace Database.Repositories
             return _context.Set<ListProduct>().Find(id);
         }
 
-        public ListProduct UpdateProduct(ListProduct product)
+        public ListProduct UpdateListProduct(ListProduct product)
         {
             _context.Entry(product).State = EntityState.Modified;
             return product;
         }
 
-        public ListProduct DeleteProduct(ListProduct product)
+        public ListProduct DeleteListProduct(ListProduct product)
         {
             _context.Set<ListProduct>().Remove(product);
             return product;

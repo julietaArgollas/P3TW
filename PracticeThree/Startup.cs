@@ -36,6 +36,7 @@ namespace PracticeThree
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ProductManager>();
+            services.AddTransient<ListProductManager>();
             services.AddTransient<UserManager>();
             services.AddTransient<IdNumberService>();
 

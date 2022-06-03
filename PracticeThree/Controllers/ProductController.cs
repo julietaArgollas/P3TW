@@ -18,10 +18,25 @@ namespace PracticeThree.Controllers
             _productManager = productManager;
         }
         [HttpGet]
-        [Route("products")]
+        [Route("Getproducts")]
         public IActionResult GetProduct()
         {
             return Ok(_productManager.GetProduct());
         }
+        /*
+        [HttpPost]
+        [Route("CreateProducts")]
+        public IActionResult CreateProduct([FromBody] Logic.Models.Product product)
+        {
+            return Ok(_productManager.CreateProduct(product));
+        }
+
+        [HttpPut]
+        [Route("UpdateProducts")]
+        public IActionResult UpdateProduct([FromBody] Logic.Models.Product product)
+        {
+            return Ok(_productManager.UpdateProduct(product));
+        }
+        */
     }
 }
